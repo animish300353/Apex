@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Steel Works | Quality Industrial Steel</title>
+    <style>
+        /* --- 1. General Settings --- */
+        :root {
+            --primary-color: #0f1c3f; /* Dark Industrial Blue */
+            --accent-color: #f39c12;  /* Safety Orange/Gold */
+            --light-grey: #f4f4f4;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; padding: 0; }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* --- 2. Header & Navigation --- */
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span { color: var(--accent-color); }
+
+        nav ul { display: flex; gap: 25px; }
+        nav a:hover { color: var(--accent-color); }
+        
+        .btn-quote {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .btn-quote:hover { background: #d68910; }
+
+        /* --- 3. Hero Section --- */
+        #hero {
+            background: linear-gradient(rgba(15, 28, 63, 0.8), rgba(15, 28, 63, 0.8)), url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            color: #ddd;
+        }
+
+        /* --- 4. About / Stats Section --- */
+        #stats {
+            background: var(--light-grey);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item h3 { font-size: 2.5rem; color: var(--primary-color); margin: 0; }
+        .stat-item p { font-weight: bold; color: #666; }
+
+        /* --- 5. Products Section --- */
+        #products { padding: 4rem 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Underline effect */
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            border: 1px solid #eee;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover { transform: translateY(-5px); }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            background: #ccc;
+            object-fit: cover;
+        }
+
+        .product-info { padding: 1.5rem; }
+        .product-info h3 { margin-top: 0; color: var(--primary-color); }
+        .product-info ul { list-style: disc; padding-left: 20px; color: #555; }
+
+        /* --- 6. Contact / CTA --- */
+        #contact {
+            background: var(--primary-color);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .contact-info, .contact-form { flex: 1; min-width: 300px; }
+        
+        .contact-info h3 { color: var(--accent-color); }
+        .contact-row { display: flex; align-items: center; margin-bottom: 15px; }
+        .contact-icon { margin-right: 15px; font-size: 1.2rem; color: var(--accent-color); }
+
+        /* Fake Form Styling */
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+        
+        button.submit-btn {
+            background: var(--accent-color);
+            border: none;
+            padding: 12px 25px;
+            color: var(--primary-color);
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #0a1229;
+            color: #777;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; }
+            nav ul { margin-top: 15px; flex-direction: column; text-align: center; gap: 10px; }
+            #hero h1 { font-size: 2rem; }
+            .stats-grid { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Apex<span>Steel</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">Company</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact" class="btn-quote">Get Quote</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container hero-content">
+            <h1>Building a Stronger Future</h1>
+            <p>Leading manufacturer and supplier of high-grade TMT bars, structural steel, and industrial piping solutions.</p>
+            <a href="#products" class="btn-quote">Explore Catalog</a>
+        </div>
+    </section>
+
+    <section id="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>25+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat-item">
+                <h3>ISO</h3>
+                <p>9001:2015 Certified</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Steel Products</h2>
+                <p>Engineered for durability and precision.</p>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1535063404120-e6966236b3f7?auto=format&fit=crop&w=500&q=60" alt="TMT Bars" class="product-img">
+                    <div class="product-info">
+                        <h3>TMT Bars</h3>
+                        <ul>
+                            <li>Grades: Fe-500, Fe-550</li>
+                            <li>High Tensile Strength</li>
+                            <li>Earthquake Resistant</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1518709414768-a88986a45ca5?auto=format&fit=crop&w=500&q=60" alt="Steel Pipes" class="product-img">
+                    <div class="product-info">
+                        <h3>Industrial Pipes</h3>
+                        <ul>
+                            <li>Seamless & Welded</li>
+                            <li>Square & Round Profiles</li>
+                            <li>Corrosion Resistant</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1626084013098-9582236371c6?auto=format&fit=crop&w=500&q=60" alt="Steel Sheets" class="product-img">
+                    <div class="product-info">
+                        <h3>Sheets & Plates</h3>
+                        <ul>
+                            <li>Hot Rolled / Cold Rolled</li>
+                            <li>Galvanized Options</li>
+                            <li>Custom Thickness</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header" style="color:white">
+                <h2 style="color:white; border-bottom-color: white;">Contact Us</h2>
+            </div>
+            
+            <div class="contact-flex">
+                <div class="contact-info">
+                    <h3>Head Office</h3>
+                    <div class="contact-row">
+                        <span class="contact-icon">&#9742;</span>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            <a href="tel:+1234567890">+1 (234) 567-8900</a>
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <span class="contact-icon">&#9993;</span>
+                        <div>
+                            <strong>Email:</strong><br>
+                            sales@apexsteel.com
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <span class="contact-icon">&#8962;</span>
+                        <div>
+                            <strong>Address:</strong><br>
+                            Plot 45, Industrial Area Phase II,<br>
+                            Steel City, ST 54321
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 style="margin-top:0;">Request a Quote</h3>
+                    <form action="#" method="POST">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Product Interest (e.g. TMT Bars)" required>
+                        <textarea rows="4" placeholder="Message / Quantity needed"></textarea>
+                        <button type="submit" class="submit-btn">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Apex Steel Works. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
